@@ -1,0 +1,45 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+
+    <Dialog id="RFCD_Dialog_01">
+        <customHeader>
+            <Bar id="RFCD_Bar_01">
+                <contentLeft>
+                </contentLeft>
+                <contentMiddle>
+                    <Title id="RFCD_Title_01" text="{i18n>rfcdialog.title}"/>
+                </contentMiddle>
+                <contentRight>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <f:SimpleForm id="RFCD_SimpleForm_01" editable="true" layout="ResponsiveGridLayout">
+                <f:content>
+                    <Label id="RFCD_Label_TorID" labelFor="RFCD_Text_TorId" text="{i18n>rfcdialog.idcarga}"/>
+                    <Text id="RFCD_Text_TorId" text="{dataModel>/TorIdForRFC}"/>
+                    <Label id="RFCD_Label_01" labelFor="RFCD_Input_01" text="{i18n>rfcdialog.rfcconductor}"/>
+                    <Text id="RFCD_Input_01" text="{dataModel>/RFC/RFC}"/>
+                    <Label id="RFCD_Label_02" labelFor="RFCD_Input_02" text="{i18n>rfcdialog.nombreconductor}"/>
+                    <Text id="RFCD_Input_02" text="{dataModel>/RFC/FullName}"/>
+                    <Label id="RFCD_Label_03" labelFor="RFCD_Input_03" text="{i18n>rfcdialog.numerocelular}"/>
+                    <Text id="RFCD_Input_03" text="{dataModel>/RFC/Tel}"/>
+                    <Label id="RFCD_Label_04" labelFor="RFCD_Input_04" text="{i18n>rfcdialog.placastracto}"/>
+                    <Input id="RFCD_Input_04"/>
+                    <Label id="RFCD_Label_05" labelFor="RFCD_Input_05" text="{i18n>rfcdialog.placascaja}"/>
+                    <Input id="RFCD_Input_05"/>
+                    <Label id="RFCD_Label_06" labelFor="RFCD_Input_06" text="{i18n>rfcdialog.economicotracto}"/>
+                    <Input id="RFCD_Input_06"/>
+                    <Label id="RFCD_Label_07" labelFor="RFCD_Input_07" text="{i18n>rfcdialog.economicocaja}"/>
+                    <Input id="RFCD_Input_07"/>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <beginButton>
+            <Button id="RFCD_Button_03" text="{i18n>rfcdialog.actualizar}" press="onUpdateTracto"/>
+        </beginButton>
+        <endButton>
+            <Button id="RFCD_Button_04" text="{i18n>rfcdialog.cancelar}" press="onCloseDialogRFC"/>
+        </endButton>
+    </Dialog>
+
+</core:FragmentDefinition>

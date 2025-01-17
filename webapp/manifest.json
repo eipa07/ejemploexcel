@@ -1,0 +1,174 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "genommalab.portal.tendering",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.2"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.12.1",
+      "toolsId": "a4311bf7-0ffa-4610-bd5d-6d76d031d902"
+    },
+    "dataSources": {
+      "ZTM_TENDERING_WORKLIST_SRV": {
+        "uri": "/sap/opu/odata/sap/ZTM_TENDERING_WORKLIST_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.4",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "genommalab.portal.tendering.i18n.i18n"
+        }
+      },
+      "": {
+        "type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "ZTM_TENDERING_WORKLIST_SRV",
+				"preload": true,
+        "settings": {
+          "defaulOperationMode": "Server",
+          "defaultBindingMode": "OneWay",
+          "defaultCountMode": "Request",
+          "refreshAfterChange": false,
+          "useBatch": false,
+          "defaultUpdateMethod": "Put"
+        }
+			}
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "genommalab.portal.tendering.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteList",
+          "pattern": "",
+          "target": [
+            "TargetList"
+          ]
+        },
+        {
+          "name": "RouteDetail",
+          "pattern": "IdCarga/{TorId}",
+					"target": [
+            "TargetDetail"
+          ]
+				},
+        {
+          "name": "RouteProductDetail",
+          "pattern": "IdCarga/{TorId}/Product/{LocationId}",
+					"target": [
+            "TargetProductDetail"
+          ]
+				},
+        {
+          "name": "RouteNotFound",
+          "pattern": "NotFound",
+					"target": [
+            "TargetNotFound"
+          ]
+				}
+      ],
+      "targets": {
+        "TargetList": {
+          "viewType": "XML",
+          "viewLevel": 1,
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "List",
+          "viewName": "List"
+        },
+        "TargetDetail": {
+          "viewType": "XML",
+          "viewLevel": 2,
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Detail",
+          "viewName": "Detail"
+        },
+        "TargetProductDetail": {
+          "viewType": "XML",
+          "viewLevel": 3,
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductDetail",
+          "viewName": "ProductDetail"
+        },
+        "TargetNotFound": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "NotFound",
+          "viewName": "NotFound"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "genommalab.portal.tendering.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

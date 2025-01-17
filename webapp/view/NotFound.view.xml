@@ -1,0 +1,14 @@
+<mvc:View controllerName="genommalab.portal.tendering.controller.NotFound"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true">
+
+    <Shell id="NF_Shell_01">
+        <MessagePage id="NF_MessagePage_01" title="{i18n>notfound.title}" text="{i18n>notfound.text}" description="{i18n>notfound.description}">
+            <buttons>
+                <Button id="NF_Button_01" text="{i18n>notfound.button}" press="onHome"/>
+            </buttons>
+        </MessagePage>
+    </Shell>
+
+</mvc:View>

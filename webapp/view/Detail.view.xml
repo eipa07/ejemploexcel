@@ -1,0 +1,63 @@
+<mvc:View controllerName="genommalab.portal.tendering.controller.Detail"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:core="sap.ui.core"
+	xmlns:f="sap.f"
+	xmlns:layout="sap.ui.layout"
+    displayBlock="true">
+
+	<Shell id="D_Shell_01">
+		<f:DynamicPage id="D_DynamicPage_01" >
+			<f:title>
+				<f:DynamicPageTitle id="D_DynamicPageTitle_01">
+					<f:heading>
+						<Title id="D_Title_01" text="{i18n>detailView.shipmenttitle}"/>
+					</f:heading>
+					<f:breadcrumbs>
+						<Breadcrumbs id="D_Breadcrumbs_01">
+							<Link id="D_Link_01" text="{i18n>detailView.home}" press="onHome"/>
+							<Link id="D_Link_02" text="{i18n>detailView.detallesEnvio}"/>
+						</Breadcrumbs>
+					</f:breadcrumbs>
+					<f:expandedContent>
+						<Text id="D_expandedContent_Label" text="{i18n>detailView.ordenflete} {dataModel>/Origin/BolNumber}" class="sapUiLargeMarginEnd sapUiSmallMarginTop Bold"/>
+						<Text id="D_expandedContent_Label1" text="{i18n>detailView.fechahorasalida} {dataModel>/Origin/DepartureDate}" class="sapUiLargeMarginBegin sapUiSmallMarginTop Bold"/>
+					</f:expandedContent>
+					<f:actions>
+						<Button id="D_Button_01" text="{i18n>detailView.aceptar}" type="Accept" press="onAccept" icon="sap-icon://accept"/>
+						<Button id="D_Button_02" text="{i18n>detailView.rechazar}" type="Reject" press="onReject" icon="sap-icon://decline"/>
+						<Button id="D_Button_03" text="{i18n>detailView.excelorigen}" icon="sap-icon://excel-attachment" type="Transparent" press="onExportOrigin"/>
+						<Button id="D_Button_04" text="{i18n>detailView.exceldestino}" icon="sap-icon://excel-attachment" type="Transparent" press="onExportDestiny"/>
+					</f:actions>
+				</f:DynamicPageTitle>
+			</f:title>
+			<f:header>
+				<f:DynamicPageHeader id="D_DynamicPageHeader_01">
+					<layout:VerticalLayout id="D_VerticalLayout_01" class="sapUiMediumLargeEnd">
+						<ObjectAttribute id="D_ObjectAttribute_01" text="{i18n>detailView.detalleorigen}" class="sapUiSmallMarginBottom Bold"/>
+						<ObjectAttribute id="D_ObjectAttribute_02" title="{i18n>detailView.nombreorigencarga}" text="{dataModel>/Origin/OriginName}"/>
+						<ObjectAttribute id="D_ObjectAttribute_03" title="{i18n>detailView.direccion}" text="{dataModel>/Origin/Address}"/>
+						<ObjectAttribute id="D_ObjectAttribute_04" title="{i18n>detailView.cajas}" text="{dataModel>/Origin/Boxes}"/>
+						<ObjectAttribute id="D_ObjectAttribute_05" title="{i18n>detailView.peso}" text="{dataModel>/Origin/Weight}"/>
+						<ObjectAttribute id="D_ObjectAttribute_06" title="{i18n>detailView.fechahorasalida}" text="{dataModel>/Origin/DepartureDateO}"/>
+					</layout:VerticalLayout>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<List id="D_List_01" items="{dataModel>/Destiny}" headerText="{i18n>detailView.detalledestino}" backgroundDesign="Solid">
+					<items>
+						<ObjectListItem id="D_ObjectListItem_01" title="{i18n>detailView.nombredestinocarga} {dataModel>DestinationName}" type="Active" press="onPressItem">
+							<attributes>
+								<ObjectAttribute id="D_ObjectAttribute_07" title="{i18n>detailView.direccionDes}" text="{dataModel>Address}"/>
+								<ObjectAttribute id="D_ObjectAttribute_08" title="{i18n>detailView.cajasDes}" text="{dataModel>Boxes}"/>
+								<ObjectAttribute id="D_ObjectAttribute_09" title="{i18n>detailView.pesoDes}" text="{dataModel>Weight}"/>
+								<ObjectAttribute id="D_ObjectAttribute_10" title="{i18n>detailView.fechahorallegada}" text="{dataModel>ArrivalDate}"/>
+							</attributes>
+						</ObjectListItem>
+					</items>
+				</List>
+			</f:content>
+		</f:DynamicPage>
+	</Shell>
+
+</mvc:View>

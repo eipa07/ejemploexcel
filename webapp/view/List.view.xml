@@ -1,0 +1,354 @@
+<mvc:View xmlns:rowmodes="sap.ui.table.rowmodes" controllerName="genommalab.portal.tendering.controller.List"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true">
+
+    <f:DynamicPage id="L_DynamicPage" preserveHeaderStateOnScroll="true">
+		<f:title>
+			<f:DynamicPageTitle id="L_DynamicPageTitle_01">
+				<f:heading>
+					<Title id="L_Title_01" text="{i18n>listView.title}"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+        <f:header>
+            <f:DynamicPageHeader id="L_DynamicPageHeader_01" pinnable="false">
+				<smartFilterBar:SmartFilterBar id="L_SmartFilterBar_01" entitySet="TenderWorklistSet">
+                    <smartFilterBar:controlConfiguration>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_01" label="{i18n>listView.secuencia}" key="Seq" index="0" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_02" label="{i18n>listView.idcarga}" key="TorId" index="1" visibleInAdvancedArea="true"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_03" label="{i18n>listView.lineatrasporte}" key="TspDescr" index="2" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_04" label="{i18n>listView.origen}" key="Origin" index="3" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_05" label="{i18n>listView.fechasalida}" key="DepartDate" index="4" visibleInAdvancedArea="false"/>
+                        <!--<smartFilterBar:ControlConfiguration id="L_ControlConfiguration_05" label="{i18n>listView.fechasalida}" key="DepartDate" index="4" visibleInAdvancedArea="false">
+							<smartFilterBar:customControl>
+								<DatePicker id="D_DateRangeSelection_04" displayFormat="dd.MM.YYYY" valueFormat="dd.MM.YYYY"/>
+							</smartFilterBar:customControl>
+						</smartFilterBar:ControlConfiguration>-->
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_06" label="{i18n>listView.horasalida}" key="DepartTime" index="5" visibleInAdvancedArea="true"/>
+                        <!--<smartFilterBar:ControlConfiguration id="L_ControlConfiguration_07" label="{i18n>listView.fechaingreso}" key="EntryDate" index="6" visibleInAdvancedArea="true">
+							<smartFilterBar:customControl>
+								<DatePicker id="D_DateRangeSelection_01" displayFormat="dd.MM.YYYY" valueFormat="dd.MM.YYYY"/>
+							</smartFilterBar:customControl>
+						</smartFilterBar:ControlConfiguration>-->
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_07" label="{i18n>listView.fechaingreso}" key="EntryDate" index="6" visibleInAdvancedArea="true"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_08" label="{i18n>listView.rfcconductor}" key="DriverRFC" index="7" visibleInAdvancedArea="true"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_09" label="{i18n>listView.nombreconductor}" key="DriverName" index="8" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_10" label="{i18n>listView.numerocelular}" key="DriverTel" index="9" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_11" label="{i18n>listView.placastracto}" key="Tract1" index="10" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_12" label="{i18n>listView.placascaja}" key="Box1" index="11" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_13" label="{i18n>listView.economicotracto}" key="Tract2" index="12" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_14" label="{i18n>listView.economicocaja}" key="Box2" index="13" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_15" label="{i18n>listView.tipounidad}" key="UnitType" index="14" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_16" label="{i18n>listView.idcliente}" key="LastStop" index="15" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_17" label="{i18n>listView.cliente}" key="Client" index="16" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_18" label="{i18n>listView.sucursal}" key="Branch" index="17" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_19" label="{i18n>listView.fechacita}" key="ApptDate" index="18" visibleInAdvancedArea="false"/>
+                        <!--<smartFilterBar:ControlConfiguration id="L_ControlConfiguration_19" label="{i18n>listView.fechacita}" key="ApptDate" index="18" visibleInAdvancedArea="false">
+							<smartFilterBar:customControl>
+								<DatePicker id="D_DateRangeSelection_05" displayFormat="dd.MM.YYYY" valueFormat="dd.MM.YYYY"/>
+							</smartFilterBar:customControl>
+						</smartFilterBar:ControlConfiguration>-->
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_20" label="{i18n>listView.horacita}" key="ApptTime" index="19" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_21" label="{i18n>listView.cajas}" key="Boxes" index="20" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_22" label="{i18n>listView.peso}" key="GroWeiVal" index="21" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_23" label="{i18n>listView.numeroparadas}" key="Stops" index="22" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_24" label="{i18n>listView.fechahorainiciolicitacion}" key="ReqStartDatetimeC" index="23" visibleInAdvancedArea="true"/>
+                        <!--<smartFilterBar:ControlConfiguration id="L_ControlConfiguration_24" label="{i18n>listView.fechahorainiciolicitacion}" key="ReqStartDatetimeC" index="23" visibleInAdvancedArea="true">
+							<smartFilterBar:customControl>
+								<DatePicker id="D_DateRangeSelection_02" displayFormat="dd.MM.YYYY" valueFormat="dd.MM.YYYY"/>
+							</smartFilterBar:customControl>
+						</smartFilterBar:ControlConfiguration>-->
+                        <!--<smartFilterBar:ControlConfiguration id="L_ControlConfiguration_25" label="{i18n>listView.fechahorafinlicitacion}" key="RespDueDtimeC" index="24" visibleInAdvancedArea="false">
+							<smartFilterBar:customControl>
+								<DatePicker id="D_DateRangeSelection_03" displayFormat="dd.MM.YYYY" valueFormat="dd.MM.YYYY"/>
+							</smartFilterBar:customControl>
+						</smartFilterBar:ControlConfiguration>-->
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_25" label="{i18n>listView.fechahorafinlicitacion}" key="RespDueDtimeC" index="24" visibleInAdvancedArea="false"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_26" label="{i18n>listView.estatusfreightrfq}" key="RFQStatus" index="25" visibleInAdvancedArea="true"/>
+                        <smartFilterBar:ControlConfiguration id="L_ControlConfiguration_27" label="{i18n>listView.codigorespuesta}" key="ResponseCode" index="26" visibleInAdvancedArea="false">
+							<smartFilterBar:customControl>
+								<ComboBox id="D_ComboBox_01" items="{dataModel>/ResponseCodeSet}">
+									<core:Item id="D_Item_01" key="{dataModel>Code}" text="{dataModel>Desc}"/>
+								</ComboBox>
+							</smartFilterBar:customControl>
+						</smartFilterBar:ControlConfiguration>
+                    </smartFilterBar:controlConfiguration>
+				</smartFilterBar:SmartFilterBar>
+			</f:DynamicPageHeader>
+        </f:header>
+		<f:content>
+            <smartTable:SmartTable id="L_SmartTable_01" smartFilterId="L_SmartFilterBar_01" class="sapUiResponsiveContentPadding" tableType="Table" entitySet="TenderWorklistSet"
+            header="{i18n>listView.items}" showRowCount="true" enableExport="true" exportType="UI5Client" enableAutoBinding="true" requestAtLeastFields="DriverRFC,ReqNr,GroWeiUni" beforeRebindTable="onBeforeRebindTable"
+			>
+                <smartTable:customToolbar>
+					<OverflowToolbar id="L_OverflowToolbar_01" design="Transparent">
+						<content>
+							<ToolbarSpacer id="L_ToolbarSpacer_01"/>
+							<Button id="L_Button_01" text="{i18n>listView.aceptar}" type="Accept" press="onApprove" icon="sap-icon://accept"/>
+							<Button id="L_Button_02" text="{i18n>listView.rechazar}" type="Reject" press="onReject" icon="sap-icon://decline"/>
+						</content>
+					</OverflowToolbar>
+				</smartTable:customToolbar>
+                <table:Table id="L_Table_01" selectionMode="Multi" visibleRowCount="10" rowSelectionChange="onRowSelectionChange" selectionBehavior="RowSelector">
+					<table:columns>
+                        <table:Column id="L_Column_01" width="6rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "Seq", "columnIndex" : "0", "leadingProperty": "Seq","sortProperty": "Seq", "filterProperty": "Seq"}'/>
+							</table:customData>
+							<Text id="L_Text_01" text="{i18n>listView.secuencia}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_01" text="{Seq}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_02" width="8rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "TorId", "columnIndex" : "1", "leadingProperty": "TorId","sortProperty": "TorId", "filterProperty": "TorId"}'/>
+							</table:customData>
+							<Text id="L_Text_02" text="{i18n>listView.idcarga}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Link id="L_Template_Link_02" text="{TorId}" wrapping="false" press="onDetail" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_03" width="22rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "TspDescr", "columnIndex" : "2", "leadingProperty": "TspDescr","sortProperty": "TspDescr", "filterProperty": "TspDescr"}'/>
+							</table:customData>
+							<Text id="L_Text_03" text="{i18n>listView.lineatrasporte}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_03" text="{TspDescr}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_04" width="8rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "Origin", "columnIndex" : "3", "leadingProperty": "Origin","sortProperty": "Origin", "filterProperty": "Origin"}'/>
+							</table:customData>
+							<Text id="L_Text_04" text="{i18n>listView.origen}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_04" text="{Origin}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_05" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "DepartDate", "columnIndex" : "4", "leadingProperty": "DepartDate","sortProperty": "DepartDate", "filterProperty": "DepartDate"}'/>
+							</table:customData>
+							<Text id="L_Text_05" text="{i18n>listView.fechasalida}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_05" text="{DepartDate}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_06" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "DepartTime", "columnIndex" : "5", "leadingProperty": "DepartTime","sortProperty": "DepartTime", "filterProperty": "DepartTime"}'/>
+							</table:customData>
+							<Text id="L_Text_06" text="{i18n>listView.horasalida}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_06" text="{DepartTime}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+						<table:Column id="L_Column_07" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "EntryDate", "columnIndex" : "6", "leadingProperty": "EntryDate","sortProperty": "EntryDate", "filterProperty": "EntryDate"}'/>
+							</table:customData>
+							<Text id="L_Text_07" text="{i18n>listView.fechaingreso}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_07" text="{EntryDate}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_08" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "DriverRFC", "columnIndex" : "7", "leadingProperty": "DriverRFC","sortProperty": "DriverRFC", "filterProperty": "DriverRFC"}'/>
+							</table:customData>
+							<Text id="L_Text_08" text="{i18n>listView.rfcconductor}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<!--<Text id="L_Template_Text_08" text="{DriverRFC}" wrapping="false" textAlign="Center"/>-->
+								<Input id="L_Template_Text_08" value="{DriverRFC}" submit="onSearchRFC"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_09" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "DriverName", "columnIndex" : "8", "leadingProperty": "DriverName","sortProperty": "DriverName", "filterProperty": "DriverName"}'/>
+							</table:customData>
+							<Text id="L_Text_09" text="{i18n>listView.nombreconductor}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_09" text="{DriverName}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_10" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "DriverTel", "columnIndex" : "9", "leadingProperty": "DriverTel","sortProperty": "DriverTel", "filterProperty": "DriverTel"}'/>
+							</table:customData>
+							<Text id="L_Text_10" text="{i18n>listView.numerocelular}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_10" text="{DriverTel}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_11" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "Tract1", "columnIndex" : "10", "leadingProperty": "Tract1","sortProperty": "Tract1", "filterProperty": "Tract1"}'/>
+							</table:customData>
+							<Text id="L_Text_11" text="{i18n>listView.placastracto}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<!--<Input id="L_Template_Text_11" value="{Tract1}"/>-->
+								<Text id="L_Template_Text_11" text="{Tract1}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_12" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "Box1", "columnIndex" : "11", "leadingProperty": "Box1","sortProperty": "Box1", "filterProperty": "Box1"}'/>
+							</table:customData>
+							<Text id="L_Text_12" text="{i18n>listView.placascaja}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<!--<Input id="L_Template_Text_12" value="{Box1}"/>-->
+								<Text id="L_Template_Text_12" text="{Box1}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_13" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "Tract2", "columnIndex" : "12", "leadingProperty": "Tract2","sortProperty": "Tract2", "filterProperty": "Tract2"}'/>
+							</table:customData>
+							<Text id="L_Text_13" text="{i18n>listView.economicotracto}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<!--<Input id="L_Template_Text_13" value="{Tract2}"/>-->
+								<Text id="L_Template_Text_13" text="{Tract2}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_14" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "Box2", "columnIndex" : "13", "leadingProperty": "Box2","sortProperty": "Box2", "filterProperty": "Box2"}'/>
+							</table:customData>
+							<Text id="L_Text_14" text="{i18n>listView.economicocaja}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<!--<Input id="L_Template_Text_14" value="{Box2}"/>-->
+								<Text id="L_Template_Text_14" text="{Box2}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_15" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "UnitType", "columnIndex" : "14", "leadingProperty": "UnitType","sortProperty": "UnitType", "filterProperty": "UnitType"}'/>
+							</table:customData>
+							<Text id="L_Text_15" text="{i18n>listView.tipounidad}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_15" text="{UnitType}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_16" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "LastStop", "columnIndex" : "15", "leadingProperty": "LastStop","sortProperty": "LastStop", "filterProperty": "LastStop"}'/>
+							</table:customData>
+							<Text id="L_Text_16" text="{i18n>listView.idcliente}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_16" text="{LastStop}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_17" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "Client", "columnIndex" : "16", "leadingProperty": "Client","sortProperty": "Client", "filterProperty": "Client"}'/>
+							</table:customData>
+							<Text id="L_Text_17" text="{i18n>listView.cliente}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_17" text="{Client}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_18" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "Branch", "columnIndex" : "17", "leadingProperty": "Branch","sortProperty": "Branch", "filterProperty": "Branch"}'/>
+							</table:customData>
+							<Text id="L_Text_18" text="{i18n>listView.sucursal}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_18" text="{Branch}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_19" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "ApptDate", "columnIndex" : "18", "leadingProperty": "ApptDate","sortProperty": "ApptDate", "filterProperty": "ApptDate"}'/>
+							</table:customData>
+							<Text id="L_Text_19" text="{i18n>listView.fechacita}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_19" text="{ApptDate}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_20" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "ApptTime", "columnIndex" : "19", "leadingProperty": "ApptTime","sortProperty": "ApptTime", "filterProperty": "ApptTime"}'/>
+							</table:customData>
+							<Text id="L_Text_20" text="{i18n>listView.horacita}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_20" text="{ApptTime}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_21" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "Boxes", "columnIndex" : "20", "leadingProperty": "Boxes","sortProperty": "Boxes", "filterProperty": "Boxes"}'/>
+							</table:customData>
+							<Text id="L_Text_21" text="{i18n>listView.cajas}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_21" text="{Boxes}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_22" width="18rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "GroWeiVal", "columnIndex" : "21", "leadingProperty": "GroWeiVal","sortProperty": "GroWeiVal", "filterProperty": "GroWeiVal"}'/>
+							</table:customData>
+							<Text id="L_Text_22" text="{i18n>listView.peso}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_22" text="{GroWeiVal} {GroWeiUni}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_23" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "Stops", "columnIndex" : "22", "leadingProperty": "Stops","sortProperty": "Stops", "filterProperty": "Stops"}'/>
+							</table:customData>
+							<Text id="L_Text_23" text="{i18n>listView.numeroparadas}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_23" text="{Stops}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_24" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "ReqStartDatetimeC", "columnIndex" : "23", "leadingProperty": "ReqStartDatetimeC","sortProperty": "ReqStartDatetimeC", "filterProperty": "ReqStartDatetimeC"}'/>
+							</table:customData>
+							<Text id="L_Text_24" text="{i18n>listView.fechahorainiciolicitacion}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_24" text="{ReqStartDatetimeC}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_25" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "RespDueDtimeC", "columnIndex" : "24", "leadingProperty": "RespDueDtimeC","sortProperty": "RespDueDtimeC", "filterProperty": "RespDueDtimeC"}'/>
+							</table:customData>
+							<Text id="L_Text_25" text="{i18n>listView.fechahorafinlicitacion}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_25" text="{RespDueDtimeC}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_26" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "RFQStatus", "columnIndex" : "25", "leadingProperty": "RFQStatus","sortProperty": "RFQStatus", "filterProperty": "RFQStatus"}'/>
+							</table:customData>
+							<Text id="L_Text_26" text="{i18n>listView.estatusfreightrfq}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_26" text="{RFQStatus}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                        <table:Column id="L_Column_27" width="10rem" hAlign="Center">
+							<table:customData>
+								<core:CustomData key="p13nData" value='\{"columnKey" : "ResponseCode", "columnIndex" : "26", "leadingProperty": "ResponseCode","sortProperty": "ResponseCode", "filterProperty": "ResponseCode"}'/>
+							</table:customData>
+							<Text id="L_Text_27" text="{i18n>listView.codigorespuesta}" wrapping="false" textAlign="Center"/>
+							<table:template>
+								<Text id="L_Template_Text_27" text="{ResponseCode}" wrapping="false" textAlign="Center"/>
+							</table:template>
+						</table:Column>
+                    </table:columns>
+				</table:Table>
+            </smartTable:SmartTable>
+        </f:content>
+	</f:DynamicPage>
+
+</mvc:View>

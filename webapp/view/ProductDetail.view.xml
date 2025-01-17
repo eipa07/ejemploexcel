@@ -1,0 +1,74 @@
+<mvc:View controllerName="genommalab.portal.tendering.controller.ProductDetail"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    displayBlock="true">
+
+    <Shell id="PD_Shell_01">
+		<f:DynamicPage id="PD_DynamicPage_01">
+			<f:title>
+				<f:DynamicPageTitle id="PD_DynamicPageTitle_01">
+					<f:heading>
+						<Title id="PD_Title_01" text="{i18n>productdialog.shipmenttitle}"/>
+					</f:heading>
+					<f:breadcrumbs>
+						<Breadcrumbs id="PD_Breadcrumbs_01">
+							<Link id="PD_Link_01" text="{i18n>productdialog.home}" press="onHome"/>
+							<Link id="PD_Link_02" text="{i18n>productdialog.detallesenvio}" press="onDetail"/>
+							<Link id="PD_Link_03" text="{i18n>productdialog.detalleproducto}"/>
+						</Breadcrumbs>
+					</f:breadcrumbs>
+					<f:expandedContent>
+						<Text id="PD_expandedContent_Label" text="{i18n>productdialog.ordenflete} {dataModel>/Origin/BolNumber}" class="sapUiLargeMarginEnd sapUiSmallMarginTop Bold"/>
+						<Text id="PD_expandedContent_Label1" text="{i18n>productdialog.fechahorasalida} {dataModel>/Origin/DepartureDate}" class="sapUiLargeMarginBegin sapUiSmallMarginTop Bold"/>
+					</f:expandedContent>
+					<f:actions>
+						<Button id="PD_Button_05" text="{i18n>productdialog.excelproducto}" icon="sap-icon://excel-attachment" type="Transparent" press="onExportProductDetail"/>
+					</f:actions>
+				</f:DynamicPageTitle>
+			</f:title>
+            <f:content>
+                <Table id="PD_Table_01" headerText="{i18n>productdialog.titletable}" items="{dataModel>/ProductDetail}">
+                    <columns>
+                        <Column id="PD_Column_01" hAlign="Center">
+                            <Text id="PD_Text_01" text="{i18n>productdialog.nombreorigencarga}" textAlign="Center"/>
+                        </Column>
+                        <Column id="PD_Column_02" hAlign="Center">
+                            <Text id="PD_Text_02" text="{i18n>productdialog.nombredestinocarga}" textAlign="Center"/>
+                        </Column>
+                        <Column id="PD_Column_03" hAlign="Center">
+                            <Text id="PD_Text_03" text="{i18n>productdialog.descripcionsku}" textAlign="Center"/>
+                        </Column>
+                        <Column id="PD_Column_04" hAlign="Center">
+                            <Text id="PD_Text_04" text="{i18n>productdialog.numerosku}" textAlign="Center"/>
+                        </Column>
+                        <Column id="PD_Column_05" hAlign="Center">
+                            <Text id="PD_Text_05" text="{i18n>productdialog.cantidadcajas}" textAlign="Center"/>
+                        </Column>
+                        <Column id="PD_Column_06" hAlign="Center">
+                            <Text id="PD_Text_06" text="{i18n>productdialog.peso}" textAlign="Center"/>
+                        </Column>
+                        <Column id="PD_Column_07" hAlign="Center">
+                            <Text id="PD_Text_07" text="{i18n>productdialog.nopedido}" textAlign="Center"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem id="PD_ColumnListItem" >
+                            <cells>
+                                <Text id="PD_Text_08" text="{dataModel>OriginName}" textAlign="Center"/>
+                                <Text id="PD_Text_09" text="{dataModel>DestinationName}" textAlign="Center"/>
+                                <Text id="PD_Text_10" text="{dataModel>ItemDescr}" textAlign="Center"/>
+                                <Text id="PD_Text_11" text="{dataModel>ProductId}" textAlign="Center"/>
+                                <Text id="PD_Text_12" text="{dataModel>Boxes}" textAlign="Center"/>
+                                <Text id="PD_Text_13" text="{dataModel>Weight}" textAlign="Center"/>
+                                <Text id="PD_Text_14" text="{dataModel>PurchaseOrder}" textAlign="Center"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </f:content>
+        </f:DynamicPage>
+	</Shell>
+
+</mvc:View>

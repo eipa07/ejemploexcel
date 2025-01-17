@@ -1,0 +1,48 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+
+    <Dialog id="BPD_Dialog_01">
+        <customHeader>
+            <Bar id="BPD_Bar_01">
+                <contentLeft>
+                </contentLeft>
+                <contentMiddle>
+                    <Title id="BPD_Title_01" text="{i18n>bpdialog.informacionconductor}"/>
+                </contentMiddle>
+                <contentRight>
+                    <Button id="BPD_Button_02" text="{i18n>bpdialog.limpiar}" type="Transparent" press="onCleanBP"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <f:SimpleForm id="BPD_SimpleForm_01" editable="true" layout="ResponsiveGridLayout">
+                <f:content>
+                    <Label id="BPD_Label_01" labelFor="BPD_Input_01" text="{i18n>bpdialog.rfcconductor}"/>
+                    <Input id="BPD_Input_01"/>
+                    <Label id="BPD_Label_02" labelFor="BPD_Input_02" text="{i18n>bpdialog.nombreconductor}"/>
+                    <Input id="BPD_Input_02"/>
+                    <Label id="BPD_Label_03" labelFor="BPD_Input_03" text="{i18n>bpdialog.apellidosconductor}"/>
+                    <Input id="BPD_Input_03"/>
+                    <Label id="BPD_Label_04" labelFor="BPD_Input_04" text="{i18n>bpdialog.telefono}"/>
+                    <MaskInput id="BPD_Input_04" mask="(999) 999 9999" placeholderSymbol="_" showClearIcon="true"/>
+                    <Label id="BPD_Label_05" labelFor="BPD_Input_05" text="{i18n>bpdialog.telefonoemergencia}"/>
+                    <MaskInput id="BPD_Input_05" mask="(999) 999 9999" placeholderSymbol="_" showClearIcon="true"/>
+                    <Label id="BPD_Label_06" labelFor="BPD_Input_06" text="{i18n>bpdialog.tiposangre}"/>
+                    <Input id="BPD_Input_06"/>
+                    <Label id="BPD_Label_07" labelFor="BPD_Input_07" text="{i18n>bpdialog.correo}"/>
+                    <Input id="BPD_Input_07"/>
+                    <Label id="BPD_Label_08" labelFor="BPD_Input_08" text="{i18n>bpdialog.contrasena}"/>
+                    <Input id="BPD_Input_08" maxLength="12" placeholder="{i18n>bpdialog.mensajeinput}" change="onValidatePassword"/>
+                    <Label id="BPD_Label_09" labelFor="BPD_Input_09" text="{i18n>bpdialog.confirmarcontrasena}"/>
+                    <Input id="BPD_Input_09" maxLength="12" placeholder="{i18n>bpdialog.mensajeinput}" change="onValidatePassword"/>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <beginButton>
+            <Button id="BPD_Button_03" text="{i18n>bpdialog.crear}" press="onCreateBP"/>
+        </beginButton>
+        <endButton>
+            <Button id="BPD_Button_04" text="{i18n>bpdialog.cancelar}" press="onCloseDialogBP"/>
+        </endButton>
+    </Dialog>
+
+</core:FragmentDefinition>
