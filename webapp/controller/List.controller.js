@@ -41,7 +41,7 @@ sap.ui.define([
                                 emphasizedAction: "Cerrar",
                                 onClose: function () {
                                     that._oRouter = sap.ui.core.UIComponent.getRouterFor(that);
-                                    that._oRouter.navTo("RouteNotFound", {}, false);
+                                    //that._oRouter.navTo("RouteNotFound", {}, false);
                                 }
                             }
                         );
@@ -212,7 +212,7 @@ sap.ui.define([
                                 emphasizedAction: "Cerrar",
                                 onClose: function () {
                                     that._oRouter = sap.ui.core.UIComponent.getRouterFor(that);
-                                    that._oRouter.navTo("RouteNotFound", {}, false);
+                                    //that._oRouter.navTo("RouteNotFound", {}, false);
                                 }
                             }
                         );
