@@ -8,7 +8,7 @@ sap.ui.define(
       return BaseController.extend("genommalab.portal.tendering.controller.App", {
         onInit: function() {
 
-          console.log("nextgen");
+          console.log("nextgen second push");
         }
       });
     }
